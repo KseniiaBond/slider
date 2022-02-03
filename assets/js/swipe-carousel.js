@@ -1,4 +1,4 @@
-
+/*jshint esversion: 6 */
 class SwipeCarousel extends Carousel {
     _initListeners () {
         super._initListeners();

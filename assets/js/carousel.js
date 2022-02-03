@@ -1,15 +1,15 @@
-
+/*jshint esversion: 6 */
 class Carousel {
-    constructor(containerID = '#carousel', slideID = '.slide') {
+    constructor(containerID = '#carousel', slideID = '.slide', interval = 2000, isPlaying = true) {
         this.container = document.querySelector(containerID);
         this.slides = this.container.querySelectorAll(slideID);
+        this.interval = interval;     
+        this.isPlaying = isPlaying;
     }
     
     _initProps() {
         this.currentSlide = 0;
-        this.isPlaying = true;
-        this.interval = 1000;           
-
+             
         this.SLIDES_COUNT = this.slides.length;
         this.CODE_LEFT_ARROW = 'ArrowLeft';
         this.CODE_RIGHT_ARROW = 'ArrowRight';
@@ -20,15 +20,20 @@ class Carousel {
 
     _initIndicators() {
         const indicators = document.createElement('div');
+
         indicators.setAttribute('class', 'indicators');
+
         for (let i = 0; i < this.SLIDES_COUNT; i++) {
             const indicator = document.createElement('div');
+
             indicator.setAttribute('class', 'indicator');
             indicator.dataset.slideTo = `${i}`;
             i === 0 && indicator.classList.add('active');
+
             indicators.append(indicator);
         }
     this.container.append(indicators);
+
     this.indicatorsContainer = this.container.querySelector('.indicators');
     this.indicators = this.indicatorsContainer.querySelectorAll('.indicator');
     }
