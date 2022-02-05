@@ -1,4 +1,7 @@
 /*jshint esversion: 6 */
+
+import Carousel from './carousel.js';
+
 class SwipeCarousel extends Carousel {
     _initListeners () {
         super._initListeners();
@@ -18,4 +21,4 @@ class SwipeCarousel extends Carousel {
         }
 }
 
-
+export default SwipeCarousel;

@@ -81,12 +81,22 @@ just for appearance; change whatever you want
   display: block;
   background-color: bisque;
   border: 1px solid black;
-  padding: 0.75em 1em;
+  /* padding: 0.75em 1em; */
   cursor: pointer;
   user-select: none;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .indicator.active {
   background-color: tomato;
   color: white;
+}
+
+.control-pause > span {
+  position: absolute;
+  opacity: 0;
 }
