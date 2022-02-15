@@ -2,20 +2,21 @@
 /*jshint esversion: 9 */
 class Carousel {
     constructor(p) {
-        const settings = {...{containerID: '#carousel', slideID:'.slide', interval: 2000, isPlaying: true, direction: 'forward'}, ...p};
+        const settings = {...{containerID: '#carousel', slideID: '.slide', interval: 2000, isPlaying: true, direction: 'forward'}, ...p};
         
         this.container = document.querySelector(settings.containerID);
         this.slides = this.container.querySelectorAll(settings.slideID);
-
+        
         this.interval = settings.interval;     
         this.isPlaying = settings.isPlaying;
         this.direction = settings.direction;
+        
     }
 
    
     _initProps() {
         this.currentSlide = 0;
-             
+
         this.SLIDES_COUNT = this.slides.length;
         this.CODE_LEFT_ARROW = 'ArrowLeft';
         this.CODE_RIGHT_ARROW = 'ArrowRight';
@@ -25,7 +26,8 @@ class Carousel {
         this.FA_PREV = '<i class="fa fa-angle-left"></i>';
         this.FA_NEXT = '<i class="fa fa-angle-right"></i>';
     }
-    
+
+      
     _initIndicators() {
         const indicators = document.createElement('div');
         
@@ -67,7 +69,7 @@ class Carousel {
         this.isPlaying ? this.pauseIcon.style.opacity = 1 : this.playIcon.style.opacity = 1;
     }
 
-    _initListeners() {
+     _initListeners() {
         this.pauseBtn.addEventListener('click', this.pausePlay.bind(this));
         this.prevBtn.addEventListener('click', this.prev.bind(this));
         this.nextBtn.addEventListener('click', this.next.bind(this));
@@ -75,8 +77,6 @@ class Carousel {
         document.addEventListener('keydown', this._pressKey.bind(this));
         this.container.addEventListener('mouseenter', this._pause.bind(this));
         this.container.addEventListener('mouseleave', this._play.bind(this));
-
-
     }
 
     _gotoNth(n) { 
@@ -85,7 +85,10 @@ class Carousel {
         this.currentSlide = (n + this.SLIDES_COUNT) % this.SLIDES_COUNT;
         this.slides[this.currentSlide].classList.toggle('active');
         this.indicators[this.currentSlide].classList.toggle('active');
-    }
+      
+        
+       }
+
 
     _gotoPrev() {
         this._gotoNth(this.currentSlide - 1);
@@ -134,11 +137,11 @@ class Carousel {
     }
     
     pausePlay() {
-        this.isPlaying ? this._pause() : this._play();
+   this.isPlaying ? this._pause() : this._play();
     }
     
     prev() {
-        this._pause();
+    this._pause();
     this._gotoPrev();
 }
     

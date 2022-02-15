@@ -8,13 +8,15 @@ these make the slideshow work
 body {
   margin: 0;
   font-family: Arial, Helvetica;
+  background-color: black;
 }
 
 .slides {
   position: relative;
-  height: 150px;
+  height: 450px;
   padding: 0px;
-  margin: 0px;
+  margin: 80px 0;
+  width: 900px;
   list-style-type: none;
 }
 
@@ -40,59 +42,90 @@ just for appearance; change whatever you want
 */
 
 .slide {
-  font-size: 40px;
-  padding: 40px;
+  text-align: center;
+  letter-spacing: 0.33em;
+  font-size: 20px;
+  padding: 20px;
   box-sizing: border-box;
   background: #333;
   color: #fff;
+  text-shadow: 1.5px 1.5px 0 rgb(0, 0, 0);
+  background-size: cover;
 }
 
 .slide:nth-of-type(1) {
-  background: red;
+  background-image: url(../img/night_city1.jpg);
 }
 
 .slide:nth-of-type(2) {
-  background: orange;
+  background-image: url(../img/night_city2.jpg);
 }
 
 .slide:nth-of-type(3) {
-  background: green;
+  background-image: url(../img/night_city3.jpg);
 }
 
 .slide:nth-of-type(4) {
-  background: blue;
+  background-image: url(../img/night_city4.jpg);
 }
 
 .slide:nth-of-type(5) {
-  background: purple;
+  background-image: url(../img/night_city5.jpg);
 }
 /* custom */
 .carousel {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
   margin: 1em;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 .indicators,
 .controls {
+  justify-content: center;
   display: flex;
   gap: 1em;
+}
+
+.controls {
   margin-top: 1em;
+}
+.indicators {
+  margin-top: -110px;
 }
 .indicator,
 .control {
   display: block;
-  background-color: bisque;
-  border: 1px solid black;
-  /* padding: 0.75em 1em; */
   cursor: pointer;
   user-select: none;
-  width: 30px;
-  height: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.control {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: white;
+  opacity: 0.3;
+  font-size: 1.5rem;
+}
+.control:hover {
+  opacity: 1;
+}
+
+.indicator {
+  background-color: bisque;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
 .indicator.active {
-  background-color: tomato;
+  background-color: rgb(255, 145, 71);
   color: white;
 }
 
@@ -100,3 +133,40 @@ just for appearance; change whatever you want
   position: absolute;
   opacity: 0;
 }
+
+.wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  z-index: -2;
+  background: #000;
+}
+
+/* .wrappers li {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+} */
+/* .wrappers li:nth-child(1) {
+  background-image: url(../img/night_city1.jpg);
+}
+.wrappers li:nth-child(2) {
+  background-image: url(../img/night_city2.jpg);
+}
+.wrappers li:nth-child(3) {
+  background-image: url(../img/night_city3.jpg);
+}
+.wrappers li:nth-child(4) {
+  background-image: url(../img/night_city4.jpg);
+}
+.wrappers li:nth-child(5) {
+  background-image: url(../img/night_city5.jpg);
+} */
