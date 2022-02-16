@@ -6,6 +6,7 @@ class Carousel {
       ...{
         containerID: "#carousel",
         slideID: ".slide",
+        slideID: true,
         interval: 2000,
         isPlaying: true,
         direction: "forward",
@@ -14,6 +15,7 @@ class Carousel {
     };
     this.container = document.querySelector(settings.containerID);
     this.slides = this.container.querySelectorAll(settings.slideID);
+    this.activeSlide = this.container.querySelector(settings.slideID);
     this.interval = settings.interval;
     this.isPlaying = settings.isPlaying;
     this.direction = settings.direction;
@@ -76,16 +78,10 @@ class Carousel {
       this._indicate.bind(this)
     );
     document.addEventListener("keydown", this._pressKey.bind(this));
-    console.log(this.currentSlide);
-    console.log(this.nextBtn);
-    this.slides[this.currentSlide].addEventListener(
-      "mouseenter",
-      this._pause.bind(this)
-    );
-    this.slides[this.currentSlide].addEventListener(
-      "mouseleave",
-      this._play.bind(this)
-    );
+    for (let i = 0; i < this.SLIDES_COUNT; i++) {
+      this.slides[i].addEventListener("mouseenter", this._pause.bind(this));
+      this.slides[i].addEventListener("mouseleave", this._play.bind(this));
+    }
   }
 
   _gotoNth(n) {
